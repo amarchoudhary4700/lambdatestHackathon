@@ -10,8 +10,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class Methods {
     public WebDriver driver;
@@ -35,7 +35,7 @@ public class Methods {
          return driver;
     }
 
-    @BeforeClass
+    @BeforeMethod
     public void setup() throws MalformedURLException, URISyntaxException{
         switch(ReadConfigFile.getProperty("server")){
             case "lambdatest":
@@ -51,7 +51,7 @@ public class Methods {
         test = new PageObjects(driver);
     }
 
-    @AfterClass
+    @AfterMethod
     public void tearDown(){
         driver.close();
         driver.quit();
@@ -66,7 +66,7 @@ public class Methods {
          HashMap<String, Object> ltOptions = new HashMap<String, Object>();
          ltOptions.put("username", "amarchoudhary4700");
          ltOptions.put("accessKey", "LT_oZkgUUdy5Ou7FvEV7GuM3591ezxc88haVZIbFLxLFZJJMiT");
-         ltOptions.put("project", "Untitled");
+         ltOptions.put("project", "Hackathon");
          ltOptions.put("selenium_version", "4.0.0");
          ltOptions.put("w3c", true);
          browserOptions.setCapability("LT:Options", ltOptions);
